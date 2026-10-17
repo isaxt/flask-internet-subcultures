@@ -1,0 +1,16 @@
+/* Layout tweaks on top of 98.css (styles.css), kept separate so that file stays untouched. */
+body { background: #008080; margin: 0; padding: 24px; font-family: Arial, sans-serif; }
+h1 { font-size: 1.6rem; margin: 0 0 8px; }
+.window { max-width: 900px; margin: 0 auto; }
+.window-body { font-size: 12px; }
+.cards { display: flex; gap: 12px; flex-wrap: wrap; }
+.card { flex: 1 1 340px; display: flex; flex-direction: column; }
+.card .window-body { flex: 1; display: flex; flex-direction: column; }
+.card h2 { font-size: 1.3rem; margin: 0 0 6px; }
+.field-border { margin: 6px 0; padding: 6px; }
+.tags { margin: 4px 0; }
+.swatch { display: inline-block; background: #fff; box-shadow: var(--border-field); padding: 1px 6px; margin: 2px 2px 0 0; }
+.vote { margin-top: auto; padding-top: 10px; }
+.vote button { width: 100%; min-height: 32px; font-weight: bold; }
+.message { margin: 0 0 8px; }
+.footer { margin-top: 10px; }

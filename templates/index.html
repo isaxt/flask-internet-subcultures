@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Which aesthetic is more you?</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">AestheticVote.exe</div>
+  </div>
+  <div class="window-body">
+    <h1>Which aesthetic is more you?</h1>
+    {% if message %}<p class="message"><b>{{ message }}</b></p>{% endif %}
+
+    <form method="post">
+      <input type="hidden" name="aesthetic_a" value="{{ pair[0].title }}">
+      <input type="hidden" name="aesthetic_b" value="{{ pair[1].title }}">
+
+      <div class="cards">
+        {% for a in pair %}
+        <div class="window card">
+          <div class="title-bar"><div class="title-bar-text">{{ a.title }}</div></div>
+          <div class="window-body">
+            <h2>{{ a.title }}</h2>
+            {% if a.decade %}<div>Decade: {{ a.decade }}</div>{% endif %}
+            <div class="field-border">{{ a.overview }}</div>
+            {% if a.motifs %}<div class="tags"><b>Motifs:</b> {{ a.motifs | join(", ") }}</div>{% endif %}
+            {% if a.colours %}
+            <div class="tags"><b>Colours:</b>
+              {% for c in a.colours %}<span class="swatch">{{ c }}</span>{% endfor %}
+            </div>
+            {% endif %}
+            <div class="vote">
+              <button name="winner" value="{{ a.title }}">This one is me</button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </form>
+
+    <div class="footer"><a href="{{ url_for('results') }}">See results</a></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+<div class="window">
+  <div class="title-bar"><div class="title-bar-text">Results.exe</div></div>
+  <div class="window-body">
+    <h1>Most "me" aesthetics</h1>
+    {% if rows %}
+    <div class="sunken-panel" style="max-height: 420px;">
+      <table style="width: 100%;">
+        <thead><tr><th>Aesthetic</th><th>Wins</th><th>Shown</th><th>Win rate</th></tr></thead>
+        <tbody>
+          {% for name, wins, shown, rate in rows %}
+          <tr><td>{{ name }}</td><td>{{ wins }}</td><td>{{ shown }}</td><td>{{ rate }}%</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p>No votes yet.</p>
+    {% endif %}
+    <div class="footer"><a href="{{ url_for('index') }}">Back to voting</a></div>
+  </div>
+</div>
+</body>
+</html>
